@@ -33,7 +33,7 @@ assert test == 59.0, "Should be 59.0"
 test=cel_fahr(110)
 print("110.0 celsius to F: ",test)
 assert test == 230.0, "Should be 230.0"
-
+ 
 test=cel_fahr(25)
 print("25.0 celsius to F: ",test)
 assert test == 77.0, "Should be 77.0"
