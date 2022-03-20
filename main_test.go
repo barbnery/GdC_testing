@@ -9,6 +9,7 @@ func TestAdder(t *testing.T) {
 	if res != 2 {
 		t.Errorf("expected 2, got: %d", res)
 	}
+	
 }
 
 func TestAdderB(t *testing.T) {
