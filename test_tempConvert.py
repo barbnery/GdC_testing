@@ -1,39 +1,31 @@
 from tempConvert import fahr_cel, cel_fahr
+import unittest
+import random
 
-print("Init unit testing temperature conversion:\n")
+class TestClass(unittest.TestCase):
 
-print("Fahrenheit to Celsius:\n")
-test=fahr_cel(32)
-print("32.0 fahrenheit to C: ",test)
-assert test == 0.0, "Should be 0.0"
+    def setResult(cls, amount, errors, failures, skipped):
+        cls.amount, cls.errors, cls.failures, cls.skipped=amount, errors, failures, skipped
 
-test=fahr_cel(113)
-print("113.0 fahrenheit to C: ",test)
-assert test == 45.0, "Should be 45.0"
+    def test_init(self):
+        print("Init unit testing temperature conversion:\n")
 
-test=fahr_cel(50)
-print("50.0 fahrenheit to C: ",test)
-assert test == 10.0, "Should be 10.0"
+        print("Fahrenheit to Celsius:\n")
 
-test=fahr_cel(59)
-print("59.0 fahrenheit to C: ",test)
-assert test == 15.0, "Should be 15.0"
+        for f in range(0,50):
+            c = ((f - 32) * 5/9)+random.randint(0,1)
+            with self.subTest(str(f)+" F to C is "+str(c)):
+                self.assertEqual(fahr_cel(f), c)
 
 
 
-print("Celsius to Fahrenheit:\n")
-test=cel_fahr(0)
-print("0.0 celsius to F: ",test)
-assert test == 32.0, "Should be 32.0"
+        for c in range(0,50):
+            f = ((c * 9/5) + 32)+random.randint(0,1)
+            with self.subTest(str(c)+" C to F is "+str(f)):
+                self.assertEqual(cel_fahr(c), f)
 
-test=cel_fahr(15)
-print("15.0 celsius to F: ",test)
-assert test == 59.0, "Should be 59.0"
 
-test=cel_fahr(110)
-print("110.0 celsius to F: ",test)
-assert test == 230.0, "Should be 230.0"
- 
-test=cel_fahr(25)
-print("25.0 celsius to F: ",test)
-assert test == 77.0, "Should be 77.0"
+# tests=TestClass()
+# tests.test_init()
+res=unittest.main(verbosity=2)
+# print(res)
